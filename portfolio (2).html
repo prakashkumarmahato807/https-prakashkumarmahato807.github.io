@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prakash Kumar Mahato — Portfolio</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--cyan:#00d4ff;--dark:#020b18;--dark2:#071428;--dark3:#0d2040;}
+html{scroll-behavior:smooth;}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--dark);color:#fff;overflow-x:hidden;}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:#020b18;}
+::-webkit-scrollbar-thumb{background:#00d4ff;border-radius:3px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:999;padding:16px 5%;display:flex;justify-content:space-between;align-items:flex-start;background:rgba(2,11,24,0.95);border-bottom:1px solid rgba(0,212,255,0.12);}
+.nav-logo{font-size:20px;font-weight:800;color:#fff;line-height:1.3;}
+.nav-logo span{color:var(--cyan);}
+.nav-links{display:flex;gap:24px;flex-wrap:wrap;padding-top:2px;}
+.nav-links a{color:#aac4d8;text-decoration:none;font-size:14px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--cyan);}
+
+/* PARTICLES BG */
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden;}
+.particle{position:absolute;border-radius:50%;background:var(--cyan);opacity:0.12;animation:float linear infinite;}
+@keyframes float{0%{transform:translateY(100vh) scale(0);}100%{transform:translateY(-10vh) scale(1);opacity:0;}}
+
+/* HERO */
+#home{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 20px 80px;position:relative;z-index:1;background:radial-gradient(ellipse at 60% 40%,#092240 0%,#020b18 65%);}
+.hero-hello{font-size:20px;color:#aac4d8;margin-bottom:6px;letter-spacing:2px;}
+.hero-name{font-size:60px;font-weight:900;color:#fff;margin-bottom:12px;line-height:1.1;text-shadow:0 0 40px rgba(0,212,255,0.15);}
+.hero-role{font-size:26px;font-weight:700;margin-bottom:18px;min-height:38px;}
+.hero-role span{color:var(--cyan);}
+.cursor{display:inline-block;width:3px;height:1em;background:var(--cyan);margin-left:2px;vertical-align:middle;animation:blink .8s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.hero-desc{font-size:16px;color:#7a96b8;max-width:580px;margin:0 auto 36px;line-height:1.8;}
+.social-row{display:flex;gap:16px;justify-content:center;margin-bottom:36px;}
+.soc-btn{width:50px;height:50px;border-radius:50%;border:2px solid var(--cyan);display:flex;align-items:center;justify-content:center;color:var(--cyan);text-decoration:none;font-size:16px;font-weight:700;transition:all .3s;box-shadow:0 0 12px rgba(0,212,255,0.25);}
+.soc-btn:hover{background:var(--cyan);color:#000;box-shadow:0 0 24px rgba(0,212,255,0.6);}
+.btn-glow{display:inline-block;padding:15px 44px;border:2px solid var(--cyan);border-radius:50px;color:var(--cyan);text-decoration:none;font-size:16px;font-weight:700;transition:all .3s;box-shadow:0 0 18px rgba(0,212,255,0.25);letter-spacing:1px;}
+.btn-glow:hover{background:var(--cyan);color:#000;box-shadow:0 0 35px rgba(0,212,255,0.6);}
+
+/* SECTION */
+section{padding:80px 5%;position:relative;z-index:1;}
+.sec-head{text-align:center;margin-bottom:60px;}
+.sec-head h2{font-size:54px;font-weight:900;color:#fff;}
+.sec-head h2 span{color:var(--cyan);}
+.sec-head p{color:#5a7a9a;font-size:15px;margin-top:10px;}
+
+/* ABOUT */
+#about{background:var(--dark2);}
+.about-wrap{display:flex;gap:60px;align-items:center;max-width:1000px;margin:0 auto;}
+.avatar-ring{width:270px;height:270px;border-radius:50%;border:3px solid var(--cyan);box-shadow:0 0 0 8px rgba(0,212,255,0.08),0 0 50px rgba(0,212,255,0.3);flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0a2a4a,#0d3a6e);font-size:90px;font-weight:900;color:#fff;position:relative;}
+.avatar-ring::before{content:'';position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(0,212,255,0.2);animation:spin 8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.about-right h3{font-size:26px;font-weight:800;color:var(--cyan);margin-bottom:6px;}
+.about-right .sub{font-size:18px;font-weight:700;color:#fff;margin-bottom:16px;}
+.about-right p{font-size:15px;color:#7a96b8;line-height:1.8;margin-bottom:14px;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;margin-top:20px;}
+.about-grid div{font-size:14px;color:#5a7a9a;}
+.about-grid div b{color:#ddeeff;}
+
+/* SERVICES */
+#services{background:var(--dark);}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1000px;margin:0 auto;}
+.srv-card{background:var(--dark3);border:1px solid rgba(0,212,255,0.15);border-radius:18px;padding:36px 24px;text-align:center;transition:all .3s;cursor:default;}
+.srv-card:hover{border-color:var(--cyan);box-shadow:0 0 35px rgba(0,212,255,0.18);transform:translateY(-8px);}
+.srv-ic{font-size:46px;margin-bottom:16px;}
+.srv-card h3{font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;}
+.srv-card p{font-size:14px;color:#5a7a9a;line-height:1.7;}
+
+/* SKILLS */
+#skills{background:var(--dark2);}
+.skills-inner{max-width:800px;margin:0 auto;}
+.sk-item{margin-bottom:26px;}
+.sk-top{display:flex;justify-content:space-between;margin-bottom:8px;}
+.sk-name{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;color:#ddeeff;}
+.sk-name em{font-size:20px;font-style:normal;}
+.sk-pct{font-size:15px;font-weight:800;color:var(--cyan);}
+.sk-bar{height:9px;background:#071428;border-radius:5px;border:1px solid rgba(0,212,255,0.1);overflow:hidden;}
+.sk-fill{height:100%;width:0%;background:linear-gradient(90deg,#004e92,#00d4ff);border-radius:5px;transition:width 1.6s cubic-bezier(.4,0,.2,1);}
+
+/* PORTFOLIO — LATEST PROJECT STYLE */
+#portfolio{background:var(--dark);padding:80px 0;}
+#portfolio .sec-head{padding:0 5%;}
+.proj-list{max-width:100%;}
+.proj-big{position:relative;overflow:hidden;margin-bottom:4px;cursor:pointer;}
+.proj-big-img{width:100%;height:320px;object-fit:cover;display:block;filter:brightness(0.55) grayscale(0.3);transition:filter .4s,transform .4s;}
+.proj-big-img-placeholder{width:100%;height:320px;display:flex;align-items:center;justify-content:center;font-size:80px;background:linear-gradient(135deg,#071428,#0d2a50);transition:transform .4s;}
+.proj-big:hover .proj-big-img{filter:brightness(0.75) grayscale(0);transform:scale(1.03);}
+.proj-big:hover .proj-big-img-placeholder{transform:scale(1.03);}
+.proj-overlay{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;background:linear-gradient(transparent,rgba(2,11,24,0.95));}
+.proj-overlay h3{font-size:22px;font-weight:800;color:#fff;margin-bottom:6px;}
+.proj-overlay .ptags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+.proj-overlay .ptag{background:rgba(0,212,255,0.15);color:var(--cyan);border:1px solid rgba(0,212,255,0.3);border-radius:20px;padding:3px 12px;font-size:12px;}
+.proj-overlay a{color:var(--cyan);text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.5px;}
+.proj-overlay a:hover{text-decoration:underline;}
+.proj-small-row{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+
+/* CONTACT */
+#contact{background:var(--dark2);text-align:center;}
+.c-cards{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-bottom:50px;}
+.c-card{background:var(--dark3);border:1px solid rgba(0,212,255,0.15);border-radius:16px;padding:28px 22px;width:210px;text-decoration:none;transition:all .3s;}
+.c-card:hover{border-color:var(--cyan);box-shadow:0 0 25px rgba(0,212,255,0.2);transform:translateY(-5px);}
+.c-ic{font-size:30px;margin-bottom:10px;}
+.c-lbl{font-size:11px;color:#5a7a9a;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.c-val{font-size:13px;color:#aac4e8;word-break:break-all;}
+.c-form{max-width:580px;margin:0 auto;}
+.c-form input,.c-form textarea{width:100%;background:#071428;border:1px solid rgba(0,212,255,0.18);border-radius:10px;padding:14px 18px;color:#fff;font-size:15px;margin-bottom:14px;outline:none;transition:border .2s;}
+.c-form input:focus,.c-form textarea:focus{border-color:var(--cyan);}
+.c-form textarea{height:130px;resize:vertical;}
+.c-form button{width:100%;padding:15px;background:transparent;border:2px solid var(--cyan);border-radius:50px;color:var(--cyan);font-size:16px;font-weight:800;cursor:pointer;letter-spacing:1px;transition:all .3s;box-shadow:0 0 18px rgba(0,212,255,0.2);}
+.c-form button:hover{background:var(--cyan);color:#000;box-shadow:0 0 35px rgba(0,212,255,0.55);}
+
+/* BACK TO TOP */
+#totop{position:fixed;bottom:28px;right:24px;width:44px;height:44px;background:var(--cyan);color:#000;border:none;border-radius:8px;font-size:20px;cursor:pointer;z-index:999;display:none;align-items:center;justify-content:center;font-weight:900;box-shadow:0 0 20px rgba(0,212,255,0.5);}
+
+/* FOOTER */
+footer{background:var(--dark);border-top:1px solid rgba(0,212,255,0.08);padding:26px;text-align:center;color:#344a64;font-size:14px;}
+footer span{color:var(--cyan);}
+
+/* FADE IN */
+.fadein{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.fadein.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  .hero-name{font-size:36px;}
+  .about-wrap{flex-direction:column;text-align:center;}
+  .srv-grid{grid-template-columns:1fr;}
+  .proj-small-row{grid-template-columns:1fr;}
+  nav{flex-direction:column;gap:8px;}
+  .sec-head h2{font-size:36px;}
+}
+</style>
+</head>
+<body>
+
+<!-- FLOATING PARTICLES -->
+<div id="particles"></div>
+
+<!-- BACK TO TOP -->
+<button id="totop" onclick="scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Prakash's<br><span>Portfolio...</span></div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#skills">Skills</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="hero-content">
+    <p class="hero-hello">Hello, It's Me</p>
+    <h1 class="hero-name">Prakash Kumar Mahato</h1>
+    <h2 class="hero-role">And I'm a <span id="typed"></span><span class="cursor"></span></h2>
+    <p class="hero-desc">Aspiring Data Analyst skilled in Python, SQL, Machine Learning, and Data Visualization. Transitioning from Software Engineering to Data Science.</p>
+    <div class="social-row">
+      <a class="soc-btn" href="https://linkedin.com/in/prakash-kumar-mahato-5b50271b3" target="_blank">in</a>
+      <a class="soc-btn" href="https://github.com/prakashkumarmahato807" target="_blank">Git</a>
+      <a class="soc-btn" href="mailto:prakashkumarmahato807@gmail.com">@</a>
+    </div>
+    <a href="#about" class="btn-glow">More About Me</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-head fadein"><h2>About <span>Me</span></h2></div>
+  <div class="about-wrap fadein">
+    <div class="avatar-ring">PK</div>
+    <div class="about-right">
+      <h3>Data Science Enthusiast!</h3>
+      <div class="sub">Aspiring Data Analyst &amp; Data Scientist</div>
+      <p>I am a passionate Data Analyst with 4+ years of professional experience in Software Engineering. I enjoy working with data to uncover meaningful insights and patterns that help in making better decisions.</p>
+      <p>I have hands-on experience using Python, SQL, Excel and Machine Learning for data analysis and visualization. Currently seeking Data Analyst / Data Scientist opportunities.</p>
+      <div class="about-grid">
+        <div>Name: <b>Prakash Kumar Mahato</b></div>
+        <div>Location: <b>Kolkata, India</b></div>
+        <div>Email: <b>prakashkumarmahato807@gmail.com</b></div>
+        <div>Experience: <b>4+ Years</b></div>
+        <div>Education: <b>Data Science — Internshala</b></div>
+        <div>Status: <b style="color:#00d4ff;">Open to Work ✓</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sec-head fadein"><h2>My <span>Services</span></h2></div>
+  <div class="srv-grid">
+    <div class="srv-card fadein">
+      <div class="srv-ic">📊</div>
+      <h3>Data Analysis</h3>
+      <p>I analyze raw datasets using Python, SQL and Excel to extract meaningful insights, trends and patterns.</p>
+    </div>
+    <div class="srv-card fadein">
+      <div class="srv-ic">🤖</div>
+      <h3>Machine Learning</h3>
+      <p>Building classification and regression models using Scikit-learn to solve real-world prediction problems.</p>
+    </div>
+    <div class="srv-card fadein">
+      <div class="srv-ic">📈</div>
+      <h3>Data Visualization</h3>
+      <p>Creating clear and informative charts, dashboards and reports using Matplotlib, Seaborn and Excel.</p>
+    </div>
+    <div class="srv-card fadein">
+      <div class="srv-ic">📋</div>
+      <h3>Excel Dashboards</h3>
+      <p>Designing professional formatted Excel reports and dashboards using openpyxl and advanced Excel features.</p>
+    </div>
+    <div class="srv-card fadein">
+      <div class="srv-ic">🐍</div>
+      <h3>Python Scripting</h3>
+      <p>Writing clean Python scripts to automate data processing, file handling and report generation tasks.</p>
+    </div>
+    <div class="srv-card fadein">
+      <div class="srv-ic">🎙️</div>
+      <h3>AI Applications</h3>
+      <p>Developing AI-powered applications such as Voice Control AI using Python and speech recognition.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-head fadein"><h2>Data Science <span>Skills</span></h2></div>
+  <div class="skills-inner fadein">
+    <div class="sk-item"><div class="sk-top"><div class="sk-name"><em>🐍</em> Python</div><div class="sk-pct">90%</div></div><div class="sk-bar"><div class="sk-fill" data-w="90"></div></div></div>
+    <div class="sk-item"><div class="sk-top"><div class="sk-name"><em>🗄️</em> MySQL / SQL</div><div class="sk-pct">82%</div></div><div class="sk-bar"><div class="sk-fill" data-w="82"></div></div></div>
+    <div class="sk-item"><div class="sk-top"><div class="sk-name"><em>🧠</em> Machine Learning</div><div class="sk-pct">79%</div></div><div class="sk-bar"><div class="sk-fill" data-w="79"></div></div></div>
+    <div class="sk-item"><div class="sk-top"><div class="sk-name"><em>📊</em> Data Analysis</div><div class="sk-pct">92%</div></div><div class="sk-bar"><div class="sk-fill" data-w="92"></div></div></div>
+    <div class="sk-item"><div class="sk-top"><div class="sk-name"><em>💬</em> Natural Language Processing</div><div class="sk-pct">70%</div></div><div class="sk-bar"><div class="sk-fill" data-w="70"></div></div></div>
+    <div class="sk-item"><div class="sk-top"><div class="sk-name"><em>🌐</em> Deep Learning</div><div class="sk-pct">72%</div></div><div class="sk-bar"><div class="sk-fill" data-w="72"></div></div></div>
+    <div class="sk-item"><div class="sk-top"><div class="sk-name"><em>📄</em> Excel &amp; openpyxl</div><div class="sk-pct">88%</div></div><div class="sk-bar"><div class="sk-fill" data-w="88"></div></div></div>
+    <div class="sk-item"><div class="sk-top"><div class="sk-name"><em>📉</em> Pandas &amp; NumPy</div><div class="sk-pct">85%</div></div><div class="sk-bar"><div class="sk-fill" data-w="85"></div></div></div>
+  </div>
+</section>
+
+<!-- PORTFOLIO — LATEST PROJECT STYLE -->
+<section id="portfolio">
+  <div class="sec-head fadein"><h2>Latest <span>Project</span></h2></div>
+  <div class="proj-list">
+
+    <!-- BIG PROJECT 1 -->
+    <div class="proj-big fadein">
+      <div class="proj-big-img-placeholder" style="background:linear-gradient(135deg,#071428,#0a2a50);">📈</div>
+      <div class="proj-overlay">
+        <h3>Zerodha Trading Data Analysis</h3>
+        <div class="ptags"><span class="ptag">Python</span><span class="ptag">Pandas</span><span class="ptag">openpyxl</span><span class="ptag">Excel</span><span class="ptag">Data Analysis</span></div>
+        <a href="https://github.com/prakashkumarmahato807/zerodha-trading-analysis" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+    <!-- BIG PROJECT 2 -->
+    <div class="proj-big fadein">
+      <div class="proj-big-img-placeholder" style="background:linear-gradient(135deg,#071428,#0d2040);">🎙️</div>
+      <div class="proj-overlay">
+        <h3>Voice Control AI Application</h3>
+        <div class="ptags"><span class="ptag">Python</span><span class="ptag">Speech Recognition</span><span class="ptag">AI</span><span class="ptag">NLP</span></div>
+        <a href="https://github.com/prakashkumarmahato807" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+    <!-- SMALL PROJECTS ROW -->
+    <div class="proj-small-row">
+      <div class="proj-big fadein">
+        <div class="proj-big-img-placeholder" style="height:220px;background:linear-gradient(135deg,#071020,#092040);">🤖</div>
+        <div class="proj-overlay">
+          <h3>ML Practice Projects</h3>
+          <div class="ptags"><span class="ptag">Scikit-learn</span><span class="ptag">NumPy</span><span class="ptag">ML</span></div>
+          <a href="https://github.com/prakashkumarmahato807" target="_blank">View on GitHub →</a>
+        </div>
+      </div>
+      <div class="proj-big fadein">
+        <div class="proj-big-img-placeholder" style="height:220px;background:linear-gradient(135deg,#071020,#0a1a3a);">📊</div>
+        <div class="proj-overlay">
+          <h3>Data Visualization Projects</h3>
+          <div class="ptags"><span class="ptag">Matplotlib</span><span class="ptag">Seaborn</span><span class="ptag">EDA</span></div>
+          <a href="https://github.com/prakashkumarmahato807" target="_blank">View on GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-head fadein"><h2>Contact <span>Me</span></h2><p>Open to opportunities and collaborations!</p></div>
+  <div class="c-cards">
+    <a href="mailto:prakashkumarmahato807@gmail.com" class="c-card fadein">
+      <div class="c-ic">📧</div><div class="c-lbl">Email</div>
+      <div class="c-val">prakashkumarmahato807@gmail.com</div>
+    </a>
+    <a href="https://github.com/prakashkumarmahato807" target="_blank" class="c-card fadein">
+      <div class="c-ic">💻</div><div class="c-lbl">GitHub</div>
+      <div class="c-val">prakashkumarmahato807</div>
+    </a>
+    <a href="https://linkedin.com/in/prakash-kumar-mahato-5b50271b3" target="_blank" class="c-card fadein">
+      <div class="c-ic">👤</div><div class="c-lbl">LinkedIn</div>
+      <div class="c-val">Prakash Kumar Mahato</div>
+    </a>
+  </div>
+  <div class="c-form fadein">
+    <input type="text" placeholder="Your Name" />
+    <input type="email" placeholder="Your Email" />
+    <textarea placeholder="Your Message"></textarea>
+    <button>Send Message</button>
+  </div>
+</section>
+
+<footer>
+  <p>Designed &amp; Built by <span>Prakash Kumar Mahato</span> &nbsp;|&nbsp; Data Analyst &amp; Data Scientist &nbsp;|&nbsp; Kolkata, India</p>
+</footer>
+
+<script>
+// PARTICLES
+const pc = document.getElementById('particles');
+for(let i=0;i<18;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  const s=Math.random()*6+3;
+  p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*12+8}s;animation-delay:${Math.random()*8}s;`;
+  pc.appendChild(p);
+}
+
+// TYPING
+const words=["Data Analyst","Data Scientist","ML Enthusiast","Python Developer"];
+let wi=0,ci=0,del=false;
+function type(){
+  const el=document.getElementById('typed');
+  if(!el)return;
+  const w=words[wi];
+  if(!del){el.textContent=w.slice(0,++ci);if(ci===w.length){del=true;setTimeout(type,2000);return;}}
+  else{el.textContent=w.slice(0,--ci);if(ci===0){del=false;wi=(wi+1)%words.length;}}
+  setTimeout(type,del?55:105);
+}
+type();
+
+// SKILL BARS
+const skillObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.querySelectorAll('.sk-fill').forEach(b=>b.style.width=b.dataset.w+'%');
+  });
+},{threshold:0.2});
+const sk=document.getElementById('skills');
+if(sk)skillObs.observe(sk);
+
+// FADE IN ON SCROLL
+const fadeObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.1});
+document.querySelectorAll('.fadein').forEach(el=>fadeObs.observe(el));
+
+// BACK TO TOP
+const topBtn=document.getElementById('totop');
+window.addEventListener('scroll',()=>{
+  topBtn.style.display=window.scrollY>400?'flex':'none';
+});
+</script>
+</body>
+</html>
